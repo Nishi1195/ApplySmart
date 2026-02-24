@@ -1,10 +1,65 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {Brain,User,Building2,BarChart3,Zap,Lock,} from "lucide-react";
 import "./Home.css";
 
 const Home = () => {
+  const homeRef = useRef(null);
+
+  // --- Cursor reactive background effect: start ---
+  useEffect(() => {
+    const el = homeRef.current;
+    if (!el) return;
+
+    const shouldEnable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!shouldEnable) return;
+
+    const lerp = (start, end, factor) => start + (end - start) * factor;
+    const target = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.22 };
+    const current = { ...target };
+    let rafId = 0;
+
+    const apply = () => {
+      rafId = 0;
+      current.x = lerp(current.x, target.x, 0.09);
+      current.y = lerp(current.y, target.y, 0.09);
+      el.style.setProperty("--bg-cursor-x", `${current.x}px`);
+      el.style.setProperty("--bg-cursor-y", `${current.y}px`);
+
+      const dx = Math.abs(target.x - current.x);
+      const dy = Math.abs(target.y - current.y);
+      if (dx > 0.5 || dy > 0.5) {
+        rafId = window.requestAnimationFrame(apply);
+      }
+    };
+
+    const handleMove = (event) => {
+      target.x = event.clientX;
+      target.y = event.clientY;
+      if (!rafId) rafId = window.requestAnimationFrame(apply);
+    };
+
+    const handleLeave = () => {
+      target.x = window.innerWidth * 0.5;
+      target.y = window.innerHeight * 0.22;
+      if (!rafId) rafId = window.requestAnimationFrame(apply);
+    };
+
+    el.style.setProperty("--bg-cursor-x", `${current.x}px`);
+    el.style.setProperty("--bg-cursor-y", `${current.y}px`);
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    window.addEventListener("mouseleave", handleLeave);
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mouseleave", handleLeave);
+    };
+  }, []);
+  // --- Cursor reactive background effect: end ---
+
   return (
-    <div className="home-container">
+    <div className="home-container" ref={homeRef}>
       {/* Hero Section */}
       <section className="hero">
         <h1 className="hero-title">

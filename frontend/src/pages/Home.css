@@ -1,9 +1,78 @@
 .home-container {
+  --bg-cursor-x: 50vw;
+  --bg-cursor-y: 20vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: radial-gradient(circle at top, #0f1c2e, #050b16);
 }
+
+/* --- Cursor reactive background effect: start --- */
+.hero,
+.features,
+.how-it-works,
+.cta-section {
+  background-repeat: no-repeat;
+}
+
+.hero {
+  background-image:
+    radial-gradient(
+      560px circle at var(--bg-cursor-x) var(--bg-cursor-y),
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0) 65%
+    ),
+    radial-gradient(circle at top center, #1e293b 0%, #020617 70%) !important;
+}
+
+.features {
+  background-image:
+    radial-gradient(
+      520px circle at var(--bg-cursor-x) var(--bg-cursor-y),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0) 68%
+    ),
+    linear-gradient(#0a1423, #0a1423) !important;
+}
+
+.how-it-works {
+  background-image:
+    radial-gradient(
+      520px circle at var(--bg-cursor-x) var(--bg-cursor-y),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0) 68%
+    ),
+    linear-gradient(#050b16, #050b16) !important;
+}
+
+.cta-section {
+  background-image:
+    radial-gradient(
+      560px circle at var(--bg-cursor-x) var(--bg-cursor-y),
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0) 65%
+    ),
+    linear-gradient(135deg, #0e1b2f, #050b16) !important;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .hero {
+    background-image: radial-gradient(circle at top center, #1e293b 0%, #020617 70%) !important;
+  }
+
+  .features {
+    background-image: linear-gradient(#0a1423, #0a1423) !important;
+  }
+
+  .how-it-works {
+    background-image: linear-gradient(#050b16, #050b16) !important;
+  }
+
+  .cta-section {
+    background-image: linear-gradient(135deg, #0e1b2f, #050b16) !important;
+  }
+}
+/* --- Cursor reactive background effect: end --- */
 
 /* --- Hero Section --- */
 .hero {
