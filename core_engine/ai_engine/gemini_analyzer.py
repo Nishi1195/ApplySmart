@@ -2,11 +2,10 @@ from google import genai
 from config.gemini_config import GEMINI_API_KEY
 
 def generate_suggestions(missing_skills, job_title="the role"):
-    # Fallback (Keep this for robustness)
     if not missing_skills:
         return "Your resume already matches the job requirements very well."
 
-    fallback = [f"- Consider learning {skill} through online documentation or projects." for skill in missing_skills]
+    fallback = [f"- Consider learning {skill} through online documentation or hands-on projects."for skill in missing_skills]
     fallback_text = "AI suggestions unavailable. Basic suggestions:\n" + "\n".join(fallback)
 
     try:
@@ -15,26 +14,25 @@ def generate_suggestions(missing_skills, job_title="the role"):
 
         client = genai.Client(api_key=GEMINI_API_KEY)
 
-        # UPDATED PROMPT: More structured, resource-heavy, and step-by-step
         prompt = f"""
         You are an expert Career Coach and Technical Recruiter.
-        
-        The candidate is missing these skills for the role of '{job_title}': 
+
+        The candidate is missing these skills for the role of '{job_title}':
         {", ".join(missing_skills)}
 
-        Provide a structured, brief improvement plan to increase their resume score. 
-        For each skill, include:
-        1. **Actionable Step**: How to bridge the gap (e.g., a specific project idea).
-        2. **Study Resources**: Specific topics to master.
-        3. **Course/Reference Links**: Suggest high-quality learning platforms (Coursera, Udemy, edX) or documentation (MDN, Official Docs).
+        Provide a VERY brief, structured improvement plan.
 
-        Format the response clearly with bold headings and bullet points. 
+        For each skill include:
+        • Actionable step (project idea)
+        • Topics to study
+        • Learning resources (Coursera, Udemy, edX, MDN, official docs)
+
+        Use bullet points.
         Keep the tone professional and encouraging.
-        Make the response in very brief.
         """
 
         response = client.models.generate_content(
-            model="models/gemini-2.5-flash", # Note: Standardizing model name
+            model="gemini-2.5-flash",
             contents=prompt
         )
 
@@ -44,7 +42,7 @@ def generate_suggestions(missing_skills, job_title="the role"):
         print("Gemini Error:", e)
         return fallback_text
 
-print("GEMINI_API_KEY:", GEMINI_API_KEY)
+
 
 # def generate_suggestions(missing_skills, job_title="the role"):
 #     # Fallback (GOOD PRACTICE – keep this)

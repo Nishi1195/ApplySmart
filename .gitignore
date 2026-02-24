@@ -49,3 +49,4 @@ frontend/build/
 # Database
 *.db
 *.sqlite
+__pycache__
