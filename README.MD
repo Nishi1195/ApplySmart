@@ -45,10 +45,8 @@ const nishi = {
     <td><b>Frontend</b></td>
     <td>
       <img src="https://skillicons.dev/icons?i=html,css,react,vite,tailwind,bootstrap&theme=light" /><br/>
-      <img src="https://img.shields.io/badge/Zustand-433E38?style=flat-square" />
       <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white" />
       <img src="https://img.shields.io/badge/Framer_Motion-E8A0BF?style=flat-square&logo=framer&logoColor=white" />
-      <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white" />
     </td>
   </tr>
   <tr>
@@ -67,7 +65,6 @@ const nishi = {
       <img src="https://skillicons.dev/icons?i=postgres,mysql,mongodb,supabase&theme=light" /><br/>
       <img src="https://img.shields.io/badge/ChromaDB-E8A0BF?style=flat-square" />
       <img src="https://img.shields.io/badge/FAISS-4B5563?style=flat-square" />
-      <img src="https://img.shields.io/badge/DuckDB-FFF000?style=flat-square&logo=duckdb&logoColor=black" />
     </td>
   </tr>
   <tr>
