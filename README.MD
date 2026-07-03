@@ -15,9 +15,6 @@
 ```javascript
 const nishi = {
   education: "B.Tech CSE - Adani University (2023 - 2027)",
-  currentRole: "Software Development Intern @ Craft Silicon (Fintech)",
-  currentlyBuilding: ["ApplySmart", "FaceVault", "DocMind"],
-  currentlyLearning: ["Retrieval-Augmented Generation", "Advanced DSA", "System Design"],
   languages: ["Python", "JavaScript", "TypeScript", "C"],
   stack: ["React", "FastAPI", "Node.js", "Supabase", "PostgreSQL"],
   aiToolkit: ["Sentence Transformers", "spaCy", "InsightFace", "FAISS", "ChromaDB", "Groq"],
@@ -25,13 +22,6 @@ const nishi = {
 };
 ```
 
-🌷 Building production-style full-stack apps with FastAPI + React
-🧠 Applying NLP & Computer Vision (RAG, face recognition, semantic search) to real products
-💼 Currently interning as a Software Development Intern at **Craft Silicon**, working on AI-powered projects
-🏆 Hackathon enthusiast — recent submission to ISRO Bharatiya Antariksh Hackathon 2026
-💡 Turning ideas into end-to-end deployable systems, one commit at a time
-
----
 
 ## 🚀 Featured Projects
 
